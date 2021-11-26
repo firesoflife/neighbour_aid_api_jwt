@@ -14,8 +14,8 @@ class ApplicationController < ActionController::API
             token = auth_header.split('')[1]
             # header: { 'Authorization': 'Bearer <token> '}
             begin
-                JWT.decode(token, 'theBigOlSecret', true, algorith: 'HS256')
-            rescue JWT::DecodeError 
+                JWT.decode(token, 'theBigOlSecret', true, algorithm: 'HS256')
+            rescue JWT::DecodeError
                 nil
                 
             end
@@ -34,7 +34,7 @@ class ApplicationController < ActionController::API
     end
 
     def authorized
-        render json: { message: 'Please log in'}, status: :unauthorized unless logged_in?
+        render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
     end
 
 end

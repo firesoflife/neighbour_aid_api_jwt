@@ -7,26 +7,26 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
         if @user.valid? 
             token = encode_token({user_id: @user.id})
-            render json: {user: @user, token: token}
+            render json: {user: @user, token: token, status: :created}
         else
-            render json: {error: "Invalid username or password"}
+            render json: { error: [@user.errors.full_messages] }, status: :unprocessable_entity
         end
     end
 
-     # SHOW
-     def show
-        @user = User.find(params[:id])
-        if @user 
-            render json: {
-                user: @user
-            }
-        else
-            render json: {
-                status: 500, 
-                errors: ['user not found']
-            }
-        end
-    end
+    #  # SHOW
+    #  def show
+    #     @user = User.find(params[:id])
+    #     if @user 
+    #         render json: {
+    #             user: @user
+    #         }
+    #     else
+    #         render json: {
+    #             status: 500, 
+    #             errors: ['user not found']
+    #         }
+    #     end
+    # end
 
     # LOGIN
     def login
@@ -68,6 +68,6 @@ class UsersController < ApplicationController
     private 
 
         def user_params
-            params.permit(:username, :password, :email, :first_name, :last_name, :street_address, :city, :state, :zip, :phone, :avatar, :deed_in_need, :id )
+            params.permit(:user, :username, :password, :password_confirmation, :email, :first_name, :last_name, :street_address, :city, :state, :zip, :phone, :avatar, :deed_in_need, :id )
         end
     end

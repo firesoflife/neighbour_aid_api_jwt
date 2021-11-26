@@ -10,6 +10,8 @@ Crud Actions help
 
 - https://betterprogramming.pub/the-beginners-guide-to-building-apps-with-react-hooks-and-a-rails-api-back-end-a414dade8e28
 
+- https://medium.com/@haileyringier/building-your-first-api-with-crud-actions-in-ruby-51c17984e769
+
 ## Gems
 
 - JWT -- `gem 'jwt'`
@@ -39,3 +41,4 @@ Crud Actions help
 7.  migrate the database - `rails db:create` and `raills db:migrate`
 8.  Enter some seed data for testing using Rails console or `seeds.rb`
 9.  The big one -- build out the Application Controller to handle JWT in `app/controllers/application_controller.rb`
+10.
